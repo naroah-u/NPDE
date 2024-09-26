@@ -40,7 +40,7 @@ int main()
 		for (auto m : m_num)
 		{
 			double dx = 2 * M_PI / m;
-			string file_name = "output_" + to_string(file_index++) + ".txt";
+			string file_name = "data/output_" + to_string(file_index++) + ".txt";
 			ofstream outputFile(file_name);
 			if (outputFile.is_open())
 			{
