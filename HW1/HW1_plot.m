@@ -1,3 +1,4 @@
+clc,clear
 for i = 0:3
     tiledlayout(1, 2, 'TileSpacing', 'compact', 'Padding', 'compact');
     file_name = "data/output_" + i + ".txt";
