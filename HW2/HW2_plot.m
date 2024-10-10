@@ -5,12 +5,11 @@ for i = 1:2
     file_name = "data/问题" + i + ".txt";
     table = readmatrix(file_name);
     x = table(1, :);
-    v = table(2:end, :);
-    u = sin(2*pi*(x+0.3));
-    error = abs(u - v);
+    y = table(2:end, :);
+    error = abs(y(end, :) - y(1:end-1, :));
 
     nexttile
-    plot(x, [v;u], 'LineWidth', 2);
+    plot(x, y, 'LineWidth', 2);
     title("解图像", 'FontSize', 14);
     legend('离散方程A', '离散方程B', '准确解', 'Location', 'northwest', 'FontSize', 14);
 

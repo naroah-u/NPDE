@@ -66,6 +66,9 @@ $$\text{离散方程B}:v_j^{n+1}=v_j^n+\frac{\Delta t}{2\Delta x}(v_{j+1}^n-v_{j
 \end{figure}
 
 \section{总结}
-FTCS格式比FTFS格式稳定，且dt/dx越大，FTFS格式越不稳定。
+这个问题中离散方程A是FTFS格式，离散方程B是FTCS格式。
+当$\frac{\Delta t}{\Delta x}$小于1时，FTFS是稳定格式，否则是不稳定格式。
+FTCS格式总是不稳定。\par
+在本问题中问题1比问题2误差更小，两个问题中都是离散方程A误差更小。
 
 \end{document}

@@ -12,11 +12,11 @@ void FTFS(int J, int N, double dx, double dt, vector<vector<double>> &v)
 	for (int n = 0; n < N; n++)
 	{
 		// 循环边界处理
-		v[J][n+1] = v[0][n+1];
 		for (int j = 0; j < J; j++)
 		{
 			v[j][n+1] = v[j][n] + dt/dx*(v[j+1][n]-v[j][n]);
 		}
+		v[J][n+1] = v[0][n+1];
 	}
 }
 
@@ -27,11 +27,11 @@ void FTCS(int J, int N, double dx, double dt, vector<vector<double>> &v)
 	{
 		// 循环边界处理
 		v[0][n+1] = v[0][n] + dt/2/dx*(v[1][n]-v[J-1][n]);
-		v[J][n+1] = v[0][n+1];
 		for (int j = 1; j < J; j++)
 		{
 			v[j][n+1] = v[j][n] + dt/2/dx*(v[j+1][n]-v[j-1][n]);
 		}
+		v[J][n+1] = v[0][n+1];
 	}
 }
 
@@ -71,10 +71,17 @@ int main()
 				for (int j = 0; j <= J; j++)
 				{
 					double x = j*dx;
-					outputFile << v[j][t/dt + 1] << '\t';
+					outputFile << v[j][t/dt] << '\t';
 				}
 				outputFile << '\n';
 			}
+			// 输出真实解
+			for (int j = 0; j <= J; j++)
+			{
+				double x = j*dx;
+				outputFile << sin(2*M_PI*(x+t)) << '\t';
+			}
+			outputFile << '\n';
 			outputFile.close();
 			cout << "文件" + file_name + "写入成功。" << endl;
 		}
